@@ -11,11 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Develop/public/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.get('/notes', (req, res) =>  {
-    res.sendFile(path.join(__dirname, '/Users/wendywilgus/git/wendywilgus/Note Taker/Develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 
 
@@ -27,28 +27,31 @@ app.get('/api/notes', (req, res) => {
  
 // Posts new notes to database
 app.post('/api/notes', (req, res)  =>  {
-    const {title, text} = req.body;
+    // const {title, text} = req.body;
+    console.log(req.body);
 
-    if (title && text)  {
-        const newNote = {
-            title,
-            text,
-            id,
-        };
+    // if (title && text)  {
+    //     const newNote = {
+    //         title,
+    //         text,
+    //         // id,
+    //     };
 
-        fs.readFile('/Users/wendywilgus/git/wendywilgus/Note Taker/Develop/db/db.json', 'utf8', (err, data) =>  {
+        fs.readFile('db/db.json', 'utf8', (err, data) =>  {
             const noteText = JSON.parse(data);
 
-            noteText.push(newNote);
+            noteText.push(req.body);
 
-            fs.writeFile('/Users/wendywilgus/git/wendywilgus/Note Taker/Develop/db/db.json', JSON.stringify(noteText, null, 4), (err));
+            fs.writeFile('db/db.json', JSON.stringify(noteText, null, 4), (err) => {
+                console.log(err);
+            });
         });
-    }
 
-    const response = {
-        status: 'sucess',
-        body: newNote,
-        };
+
+    // const response = {
+    //     status: 'sucess',
+    //     body: newNote,
+    //     };
 });
 
 
@@ -75,9 +78,9 @@ app.delete("/api/notes/:id", function(req, res) {
               );
       });
       res.redirect('back'); 
-    }
-    )
+})
+});
   
-  app.listen(PORT, () =>
+app.listen(PORT, () =>
     console.log(`express server listening on port ${PORT} 🚀`)
-)
+);
