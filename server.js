@@ -20,7 +20,7 @@ app.get('/notes', (req, res) =>  {
 
 
 app.get('/api/notes', (req, res) => {
-    fs.readFile('/Users/wendywilgus/git/wendywilgus/Note Taker/Develop/db/db.json', 'utf8', (err, data) =>  {
+    fs.readFile('./db/db.json', 'utf8', (err, data) =>  {
         const noteText = JSON.parse(data);
         res.json(noteText);
 });
@@ -37,12 +37,12 @@ app.post('/api/notes', (req, res)  =>  {
     //         // id,
     //     };
 
-        fs.readFile('db/db.json', 'utf8', (err, data) =>  {
+        fs.readFile('./db/db.json', 'utf8', (err, data) =>  {
             const noteText = JSON.parse(data);
 
             noteText.push(req.body);
 
-            fs.writeFile('db/db.json', JSON.stringify(noteText, null, 4), (err) => {
+            fs.writeFile('./db/db.json', JSON.stringify(noteText, null, 4), (err) => {
                 console.log(err);
             });
         });
@@ -58,7 +58,7 @@ app.post('/api/notes', (req, res)  =>  {
 
  //gets note by id
 app.get('/api/notes/:id', (req, res) => {
-    fs.readFile('/Users/wendywilgus/git/wendywilgus/Note Taker/Develop/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         const noteText = JSON.parse(data);
         res.json(noteText[req.param.id]);
     }
