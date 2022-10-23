@@ -50,7 +50,7 @@ The following images show the web application's appearance and functionality:
 
 ## Installation
 No installation is needed for this application.  Please find the deployed site here.
-- [Heroku Deployed Site]("https://notesapp1234567.herokuapp.com/notes")
+- [Heroku Deployed Site](https://notesapp1234567.herokuapp.com/notes)
 
 ## License
 This project was completed as part of Georgia Tech's Full Stack Development Boot Camp course. 
@@ -59,7 +59,7 @@ This project was completed as part of Georgia Tech's Full Stack Development Boot
 
 ## Resources
 The following resources were helpful in researching best practices and problem-solving on the project.
-* [ExpressJs] (https://expressjs.com/en/guide/routing.html)
-* [Routing] (https://expressjs.com/en/guide/routing.html)
+* [ExpressJs](https://expressjs.com/en/guide/routing.html)
+* [Routing](https://expressjs.com/en/guide/routing.html)
 * [readFileSync Method](https://www.geeksforgeeks.org/node-js-fs-readfilesync-method/)
 * [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4)

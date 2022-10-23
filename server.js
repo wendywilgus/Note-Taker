@@ -30,40 +30,25 @@ app.post('/api/notes', (req, res)  =>  {
     // const {title, text} = req.body;
     console.log(req.body);
 
-    // if (title && text)  {
-    //     const newNote = {
-    //         title,
-    //         text,
-    //         // id,
-    //     };
-
         fs.readFile('./db/db.json', 'utf8', (err, data) =>  {
-            const noteText = JSON.parse(data);
+        const noteText = JSON.parse(data);
 
-            noteText.push(req.body);
+        noteText.push(req.body);
 
-            fs.writeFile('./db/db.json', JSON.stringify(noteText, null, 4), (err) => {
-                console.log(err);
-            });
+        fs.writeFile('./db/db.json', JSON.stringify(noteText, null, 4), (err) => {
+            console.log(err);
         });
-
-
-    // const response = {
-    //     status: 'sucess',
-    //     body: newNote,
-    //     };
+    });
 });
 
 
 
- //gets note by id
+//gets note by id
 app.get('/api/notes/:id', (req, res) => {
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
         const noteText = JSON.parse(data);
         res.json(noteText[req.param.id]);
-    }
-
-)
+    })
 });
 
 //deletes notes based on specific id
